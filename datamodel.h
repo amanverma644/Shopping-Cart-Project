@@ -1,6 +1,7 @@
 #include <string>
 using namespace std;
 
+//forward declaration
 class Item;
 class Cart;
 
@@ -23,6 +24,10 @@ public:
         return name + " : Rs " + to_string(price) + "\n";
     }
 
+    string getShortName()
+    {
+        return name.substr(0, 1);
+    }
     friend class Item;
 };
 
