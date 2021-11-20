@@ -41,6 +41,32 @@ Product *chooseProduct()
     return NULL;
 }
 
+bool checkout(Cart &cart)
+{
+    if (cart.isEmpty())
+    {
+        return false;
+    }
+
+    int total = cart.getTotal();
+
+    cout << "Pay in Cash: ";
+    int paid;
+    cin >> paid;
+
+    if (paid >= total)
+    {
+        cout << "Change " << paid - total << endl;
+        cout << "Thank you for Shopping!";
+        return true;
+    }
+    else
+    {
+        cout << "Not enough Cash";
+        return false;
+    }
+}
+
 int main()
 {
     char action;
@@ -66,6 +92,14 @@ int main()
             cout << "----------------------" << endl;
             cout << cart.viewCart();
             cout << "----------------------" << endl;
+        }
+        else if (action == 'c')
+        {
+            //Checkout
+            if (checkout(cart))
+            {
+                break;
+            }
         }
     }
     return 0;
